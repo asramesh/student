@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<style>
+       #student, #teacher{
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 80%;
+}
+
+#student td, #teacher td, #student th, #teacher th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#student tr:nth-child(even){background-color: #f2f2f2;}, #teacher tr:nth-child(even){background-color: #f2f2f2;}
+
+#student tr:hover {background-color: orange;}, #teacher tr:hover {background-color: orange;}
+
+#student th, #teacher th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #0985e3;
+  color: white;
+}
+
+#h1 {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  color: #9500ff;
+}
+</style>
+
+    <meta charset="UTF-8">
+    <title>Student</title>
+</head>
+<body>
+<h1 id="h1">The Great Student Database </h1>
+<div th:switch="${students}">
+    <table id="student">
+        <thead>
+        <tr>
+            <th>Student ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Middle Initial</th>
+            <th>Age</th>
+            <th>Grade</th>
+            <th>Teacher ID</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="student:${students}">
+            <td th:text="${student.studentId}"></td>
+            <td th:text="${student.firstName}"></td>
+            <td th:text="${student.lastName}"></td>
+            <td th:text="${student.middleInitial}"></td>
+            <td th:text="${student.age}"></td>
+            <td th:text="${student.grade}"></td>
+            <td th:text="${student.teacherId}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="details", style = "display:none">
+</div>
+
+</body>
+
+<script>
+    function viewDetails(name) {
+
+    var x= document.getElementById("details");
+    x.style.display = "block";
+    message(name);
+    }
+</script>
+
+</html>

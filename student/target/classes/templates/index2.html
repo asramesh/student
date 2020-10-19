@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>teacher</title>
+
+    <style>
+       #teacher{
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 80%;
+}
+
+#teacher td, #teacher th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#teacher tr:nth-child(even){background-color: #f2f2f2;}
+
+#teacher tr:hover {background-color: orange;}
+
+#teacher th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #0985e3;
+  color: white;
+}
+
+#h1 {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  color: #9500ff;
+}
+    </style>
+</head>
+<body>
+<h1 id="h1">The Great Teacher Database</h1>
+<div th:switch =${teachers}>
+    <table id = "teacher">
+        <thead>
+        <tr>
+            <th>Teacher ID</th>
+            <th>Teacher First Name</th>
+            <th>Teacher Last Name</th>
+            <th>Subject</th>
+            <th>Start Date</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each ="teacher:${teachers}">
+            <td th:text="${teacher.teacherId}"></td>
+            <td th:text="${teacher.firstName}"></td>
+            <td th:text="${teacher.lastName}"></td>
+            <td th:text="${teacher.subject}"></td>
+            <td th:text="${teacher.startDate}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
